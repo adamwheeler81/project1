@@ -1,0 +1,132 @@
+.navbar {
+  padding: 20px;
+  text-align: center;
+  background-color: beige;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 2fr 5fr 5fr 2fr;
+  grid-template-rows: 2fr 16fr;
+}
+
+.input {
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  background-color: beige;
+  text-align: center;
+  cursor: pointer;
+}
+
+.searchRecipes {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.searchRestaurants {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+#results {
+  grid-column: 2/ 4;
+  grid-row: 2;
+}
+
+#recipeInfo {
+  width: 75%;
+}
+
+#options {
+  grid-column: 2 / 4;
+  grid-row: 2;
+}
+
+.optionHeader {
+  width: 100%;
+  padding: 5px;
+  margin: 5px;
+  border-bottom: 1px solid rgb(10, 10, 10);
+}
+
+#courseDiv {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+  grid-template-rows: 2fr 2fr 2fr;
+}
+
+#ingredientsDiv {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+  grid-template-rows: 2fr 2fr;
+}
+
+#cuisineDiv {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+  grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+  width: 100%;
+  padding: 5px;
+  margin: 5px;
+  border-bottom: 1px solid rgb(10, 10, 10);
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  list-style: none;
+}
+
+#submitDiv {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+  grid-template-rows: 2fr;
+}
+
+#submitSpan {
+  /* padding: 10px; */
+  font-weight: bold;
+  padding: 5px;
+  margin: 5px;
+  background-color: beige;
+  border: 1px solid beige;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#submitBtn {
+  grid-column: 5 / 5;
+  font-weight: bold;
+}
+
+.optionsBtn,
+#submitBtn,
+.listItem {
+  padding: 5px;
+  margin: 5px;
+  background-color: beige;
+  border: 1px solid beige;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.optionsBtn:hover,
+#submitBtn:hover,
+.listItem:hover {
+  background-color: darkkhaki;
+  color: #ffffff;
+}
+
+.optionsBtn:active,
+#submitBtn:active,
+.listItem:active {
+  background-color: #efdbfd;
+}
+
+.addedOpt {
+  background-color: orange;
+}
