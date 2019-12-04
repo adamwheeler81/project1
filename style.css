@@ -4,43 +4,23 @@
   background-color: beige;
 }
 
-.container {
+/* .container {
   display: grid;
   grid-template-columns: 2fr 5fr 5fr 2fr;
   grid-template-rows: 2fr 16fr;
 }
-
+ */
 .input {
   border-radius: 5px;
-  padding: 20px;
-  margin: 10px;
+  padding: 10px;
+  margin: 10px auto;
   background-color: beige;
   text-align: center;
   cursor: pointer;
 }
 
-.searchRecipes {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.searchRestaurants {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-#results {
-  grid-column: 2/ 4;
-  grid-row: 2;
-}
-
 #recipeInfo {
   width: 75%;
-}
-
-#options {
-  grid-column: 2 / 4;
-  grid-row: 2;
 }
 
 .optionHeader {
@@ -50,22 +30,7 @@
   border-bottom: 1px solid rgb(10, 10, 10);
 }
 
-#courseDiv {
-  display: grid;
-  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
-  grid-template-rows: 2fr 2fr 2fr;
-}
-
-#ingredientsDiv {
-  display: grid;
-  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
-  grid-template-rows: 2fr 2fr;
-}
-
 #cuisineDiv {
-  display: grid;
-  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
-  grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
   width: 100%;
   padding: 5px;
   margin: 5px;
@@ -82,13 +47,12 @@ ul {
 }
 
 #submitDiv {
-  display: grid;
+  /*  display: grid;
   grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
-  grid-template-rows: 2fr;
+  grid-template-rows: 2fr; */
 }
 
 #submitSpan {
-  /* padding: 10px; */
   font-weight: bold;
   padding: 5px;
   margin: 5px;
@@ -99,7 +63,7 @@ ul {
 }
 
 #submitBtn {
-  grid-column: 5 / 5;
+  /* grid-column: 5 / 5; */
   font-weight: bold;
 }
 
