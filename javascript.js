@@ -137,19 +137,41 @@ $(document).ready(function() {
     var newTitle = $("<h2>", {
       class: "recipeTitle"
     });
-    var newSummary = $("<p>", {
-      class: "recipeSummary"
-    });
 
     // build query
-    var query = sQueryStr + queryId + "/summary";
+    var query = sQueryStr + queryId + "/information";
+
     sSettings.url = query;
 
     $.ajax(sSettings).done(function(response) {
+      console.log(response);
       newTitle.text(response.title);
-      newSummary.html(response.summary);
+      var steps = $("<div>", {
+        id: "stepsDiv"
+      });
+      for (var i = 0; i < response.analyzedInstructions.length; i++) {
+        steps.append(
+          $("<h4>", {
+            text: response.analyzedInstructions[i].name
+          })
+        );
+        for (
+          var j = 0;
+          j < response.analyzedInstructions[i].steps.length;
+          j++
+        ) {
+          steps.append(
+            $("<span>", {
+              class: "steps",
+              text: response.analyzedInstructions[i].steps[j].step
+            })
+          );
+          //console.log(response.analyzedInstructions[i].steps[j].step);
+        }
+      }
+
       newDiv.append(newTitle);
-      newDiv.append(newSummary);
+      newDiv.append(steps);
       newDialog.append(newDiv);
       // append dialog to #results and show
       $("#results").append(newDialog);
@@ -178,7 +200,7 @@ $(document).ready(function() {
       sQueryObject.queryCuisine +
       "&type=" +
       sQueryObject.queryCourse +
-      "&query=" +
+      "&instructionsRequired=true&query=" +
       sQueryObject.queryIngredients;
     sSettings.url = query;
     //console.log(query);
