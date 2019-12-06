@@ -203,7 +203,6 @@ $(document).ready(function() {
       "&instructionsRequired=true&query=" +
       sQueryObject.queryIngredients;
     sSettings.url = query;
-    //console.log(query);
     $.ajax(sSettings).done(function(response) {
       if (response.results.totalResults == 0) {
         console.log("No recipes found. Please search again.");
@@ -212,6 +211,7 @@ $(document).ready(function() {
         );
       } else {
         // iterate through results and add recipes to list element inside of modal
+        console.log(response);
         var newList = $("<ul>");
         for (var i = 0; i < response.results.length; i++) {
           var newListItem = $("<li>", {
@@ -220,7 +220,7 @@ $(document).ready(function() {
           });
           newListItem.text(response.results[i].title);
           newList.append(newListItem);
-          console.log(response.results[i].title);
+          console.log(response.results[i]);
         }
         newDiv.append(newList);
       }

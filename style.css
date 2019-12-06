@@ -3,6 +3,14 @@
   text-align: center;
   background-color: beige;
 }
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+button,
+input {
+  overflow: visible;
+}
 
 /* .container {
   display: grid;
@@ -93,4 +101,96 @@ ul {
 
 .addedOpt {
   background-color: orange;
+}
+.landing-page-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(assets/images/table-on-wooden-plank-326279.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.landing-page-container .logo {
+  width: 20rem;
+  top: 10rem;
+  left: 3rem;
+}
+.landing-page-container .input-wrapper {
+  width: 46rem;
+  max-width: 90vw;
+  min-height: 30rem;
+  border-radius: 1.2rem;
+  background: #fff;
+  box-shadow: 0 0 2rem #b4b4b4;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 4rem 2rem 2rem;
+  z-index: 2;
+}
+.landing-page-container .input-wrapper .input-content {
+  position: relative;
+  width: 34rem;
+  max-width: 100%;
+}
+.landing-page-container .input-wrapper h1 {
+  font-weight: 600;
+  -webkit-transform: scale(1.06);
+  transform: scale(1.06);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+  margin-bottom: 2.4rem;
+}
+.landing-page-container .input-wrapper p {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #464646;
+  letter-spacing: 0.05rem;
+}
+.landing-page-container .input-wrapper .ingredient-pill-box {
+  min-height: 4.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+.landing-page-container .input-wrapper .action-container .search-cta {
+  background: #ffcc2a;
+  border: none;
+  outline: none;
+  color: #000;
+  box-shadow: none;
+  padding: 0.65rem 3.6rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.landing-page-container .input-wrapper input {
+  outline: none;
+  border: 1px solid #a8a8a8;
+  border-radius: 0.2rem;
+  padding-left: 3rem;
+  position: relative;
+  background-image: url(assets/images/icons8-ice-cream-24.png);
+  background-repeat: no-repeat;
+  background-position: 2%;
+  width: 100%;
+  height: 2.7rem;
+}
+
+.ingredient-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 2rem 0.45rem 1rem;
+  border-radius: 1.4rem;
+  font-weight: 600;
+  background: #ffcc2a;
+  color: #333;
+  cursor: default;
+  box-sizing: border-box;
+  margin-top: 0;
+  white-space: nowrap;
 }
