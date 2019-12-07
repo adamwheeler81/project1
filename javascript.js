@@ -242,33 +242,38 @@ $(document).ready(function() {
     showOptions();
   });
 
-  $(".searchRestaurants").on("click", function() {
-    console.log("clicked restaurants");
-    navigator.geolocation.getCurrentPosition(function(position) {
-      zSettings.url =
-        zQueryStr +
-        "geocode?lat=" +
-        position.coords.latitude +
-        "&lon=" +
-        position.coords.longitude;
 
-      $.ajax(zSettings).done(function(res) {
-        $("#results").empty();
-        var newRestaurantDialog = $("<dialog>").attr("id", "restaurants");
-        for (var i = 0; i < res.nearby_restaurants.length; i++) {
-          //console.log(res.nearby_restaurants[i].restaurant.name);
-          var newRestaurantDiv = $("<div>", {
-            class: "restaurant"
-          });
-          var newRestaurantName = $("<h3>", {
-            class: "restaurantName"
-          });
-          var newRestaurantAddress = $("<h4>", {
-            class: "restaurantAddress"
-          });
-          var newRestaurantInfo = $("<p>", {
-            class: "restaurantInfo"
-          });
+//Search restaurants
+	$('.searchRestaurants').on('click', function() {
+
+		//Will need click button in menu
+		navigator.geolocation.getCurrentPosition(function(position) {
+			zSettings.url =
+				zQueryStr +
+				'geocode?lat=' +
+				position.coords.latitude +
+				'&lon=' +
+				position.coords.longitude;
+
+
+			$.ajax(zSettings).done(function(res) {
+				$('#results').empty();
+				var newRestaurantDialog = $('<dialog>').attr(
+					'id',
+					'restaurants'
+				);
+				for (var i = 0; i < res.nearby_restaurants.length; i++) {
+					console.log(res.nearby_restaurants[i].restaurant.name);
+					var newRestaurantDiv = $('<div>').addClass('restaurant');
+					var newRestaurantName = $('<h3>').addClass(
+						'restaurantName'
+					);
+					var newRestaurantAddress = $('<h4>').addClass(
+						'restaurantAddress'
+					);
+					var newRestaurantInfo = $('<p>').addClass('restaurantInfo');
+					var newRestaurantMenu = $('<button>').addClass('restaurantInfo');
+
 
           newRestaurantName.text(res.nearby_restaurants[i].restaurant.name);
           newRestaurantDiv.append(newRestaurantName);
@@ -278,10 +283,35 @@ $(document).ready(function() {
           );
           newRestaurantDiv.append(newRestaurantAddress);
 
-          newRestaurantInfo.text(res.nearby_restaurants[i].restaurant.cuisines);
-          newRestaurantDiv.append(newRestaurantInfo);
-          newRestaurantDialog.append(newRestaurantDiv);
-        }
+
+					newRestaurantInfo.text(
+						res.nearby_restaurants[i].restaurant.cuisines
+					);
+					newRestaurantDiv.append(newRestaurantInfo);
+				
+				//Working on linking buttons to menu urls
+				//attempted to add attribute
+				//attempted to replace the url
+				//Will continue to work on
+					newRestaurantMenu.text(
+						"Go to Menu"
+						//res.nearby_restaurants[i].restaurant.menu_url
+					);
+					newRestaurantDiv.append(newRestaurantMenu.attr("src", res.nearby_restaurants[i].restaurant.menu_url));
+					newRestaurantMenu.on('click', function() {
+						console.log(res.nearby_restaurants[i].restaurant.menu_url)
+						//window.location.replace(JSON.stringify(res.nearby_restaurants[i].restaurant.menu_url));
+					})
+					console.log(res);
+
+
+					//Append the above info into the dialog box
+					newRestaurantDialog.append(newRestaurantDiv);
+
+				
+
+				}
+
 
         $("#results").append(newRestaurantDialog);
         newRestaurantDialog.show();

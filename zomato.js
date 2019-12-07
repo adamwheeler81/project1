@@ -1,5 +1,6 @@
 // Zomato API variables
 var zAPI_KEY = "be956a902b4eeb31668a781cdcde7fb5";
+//Additional API key in case of emergency: 0f0d0460dd6e939c2ab95c52f9938605
 //--header "Accept: application/json"
 //--header "user-key: be956a902b4eeb31668a781cdcde7fb5" "https://developers.zomato.com/api/v2.1/geocode?lat=45.43&lon=-122.64"
 
@@ -20,4 +21,6 @@ var zSettings = {
     Accept: "application/json",
     "user-key": zAPI_KEY
   }
+  
 };
+
