@@ -1,8 +1,6 @@
 $(document).ready(function() {
   // stand in variables for testing
-  var ingredients = ["carrots", "butter", "chicken"];
-  var recipeId = "374165";
-  var imageRoot = "https://spoonacular.com/recipeImages/";
+  var ingredients = [];
 
   // EDIT for templates
   // load landing page
@@ -78,32 +76,17 @@ $(document).ready(function() {
       "&instructionsRequired=true&query=" +
       sQueryObject.queryIngredients;
     sSettings.url = query;
+
     $.ajax(sSettings).done(function(response) {
-      if (response.results.totalResults == 0) {
-        console.log("No recipes found. Please search again.");
+      if (response.totalResults == 0) {
         $("#results").text(
           "Sorry! I couldn't find a gluten free recipe that matched the search terms."
         );
       } else {
-        // iterate through results and add recipes to list element inside of modal
+        // iterate through results
         console.log(response);
-
         for (var i = 0; i < response.results.length; i++) {
-          var newResult = $("<div>", {
-            id: response.results[i].id,
-            class: "recipeCard",
-            html: "<h5>" + response.results[i].title + "</h5>"
-          });
-          newResult.append(
-            $("<img>", {
-              src: imageRoot + response.results[i].image,
-              alt: response.results[i].image,
-              class: "recipeCardImg"
-            })
-          );
-
-          $("#results").append(newResult);
-          //console.log(response.results[i]);
+          $("#results").append(getRecipeCard(response.results[i]));
         }
       }
     });
@@ -131,25 +114,31 @@ $(document).ready(function() {
 
   $("#mainInput").on("keypress", function(e) {
     if (e.which == 13) {
-      ingredients.push($("#mainInput").val());
+      // add new ingredient to array
+      sQueryObject.queryIngredients.push($("#mainInput").val());
+      // clear input
+      $("#mainInput").val("");
       $("#ingredient-pill-box").empty();
-      for (var i = 0; i < ingredients.length; i++) {
+      for (var i = 0; i < sQueryObject.queryIngredients.length; i++) {
         $("#ingredient-pill-box").append(
           $("<div>", {
             class: "ingredient-pill",
-            html: ingredients[i]
+            html: sQueryObject.queryIngredients[i]
           })
         );
       }
     }
   });
 
-  $("#mainFind").on("click", function() {
+  $("#recipeFind").on("click", function() {
     $("#root").empty();
-    // EDIT to add templates
-    /* showSidebar(); */
+    resultsPage(getIngredientsSidebar(sQueryObject.queryIngredients));
     getRecipes();
-    resultsPage(ingredients, "");
-    //showIngredients("sidebar");
   });
+});
+
+$("#restaurantFind").on("click", function() {
+  $("#root").empty();
+  resultsPage(getRestaurantSidebar());
+  getRestaurants();
 });
