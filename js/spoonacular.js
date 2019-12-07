@@ -39,47 +39,15 @@ var courses = [
 ];
 
 var ingredientsList = [
-//fruits
-  "Apple",
-  "Orange",
-  "Banana",
-  "Lime",
-  "Lemon",
-//vegetable
-  "Cauliflower",
-  "Broccoli",
-  "Carrots",
-  "Edamame",
-  "Asparagus",
-//grains, legumes, nuts
-  "Black Beans",
-  "Garbanzo Beans",
-  "Pinto Beans",
-  "Oatmeal",
-  "Flour",
-  "Coconut Flour",
-  "Tofu",
-//dairy and alternatives
-  "Cheddar Cheese",
-  "Swiss Cheese",
-  "Goat Cheese",
-  "Egg",
-  "Milk",
-  "Almond Milk",
-  "Coconut Milk",
-  "Oat Milk",
-  "Soy Milk",
-//meat
-  "Chicken",
-  "Beef",
-  "Pork",
-  "Turkey",
-//fish & seafood
-  "White-fish",
-  "Lobster",
-  "Crab",
-  "Scallops"
-
+  "apple",
+  "orange",
+  "cauliflower",
+  "beans",
+  "cheddar",
+  "swiss",
+  "chicken",
+  "beef",
+  "pork"
 ];
 
 var cuisine = [
