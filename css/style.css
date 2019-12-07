@@ -102,6 +102,7 @@ ul {
 .addedOpt {
   background-color: orange;
 }
+
 .landing-page-container {
   width: 100vw;
   height: 100vh;
@@ -112,11 +113,13 @@ ul {
   justify-content: center;
   align-items: center;
 }
+
 .landing-page-container .logo {
   width: 20rem;
   top: 10rem;
   left: 3rem;
 }
+
 .landing-page-container .input-wrapper {
   width: 46rem;
   max-width: 90vw;
@@ -130,12 +133,14 @@ ul {
   padding: 4rem 2rem 2rem;
   z-index: 2;
 }
+
 .landing-page-container .input-wrapper .input-content {
   position: relative;
   width: 34rem;
   max-width: 100%;
 }
-.landing-page-container .input-wrapper h1 {
+
+.input-content h1 {
   font-weight: 600;
   -webkit-transform: scale(1.06);
   transform: scale(1.06);
@@ -143,13 +148,15 @@ ul {
   transform-origin: left;
   margin-bottom: 2.4rem;
 }
-.landing-page-container .input-wrapper p {
+
+.input-content p {
   font-size: 0.9rem;
   font-weight: 600;
   color: #464646;
   letter-spacing: 0.05rem;
 }
-.landing-page-container .input-wrapper .ingredient-pill-box {
+
+.input-content #ingredient-pill-box {
   min-height: 4.5rem;
   display: flex;
   flex-wrap: wrap;
@@ -157,7 +164,8 @@ ul {
   padding-bottom: 1rem;
   margin-top: 0.5rem;
 }
-.landing-page-container .input-wrapper .action-container .search-cta {
+
+.action-container .search-cta {
   background: #ffcc2a;
   border: none;
   outline: none;
@@ -167,7 +175,8 @@ ul {
   font-weight: 600;
   font-size: 1.2rem;
 }
-.landing-page-container .input-wrapper input {
+
+/* .landing-page-container .input-wrapper input {
   outline: none;
   border: 1px solid #a8a8a8;
   border-radius: 0.2rem;
@@ -178,7 +187,7 @@ ul {
   background-position: 2%;
   width: 100%;
   height: 2.7rem;
-}
+} */
 
 .ingredient-pill {
   position: relative;
@@ -193,4 +202,12 @@ ul {
   box-sizing: border-box;
   margin-top: 0;
   white-space: nowrap;
+}
+
+.recipeCard {
+}
+
+.recipeCardImg {
+  height: 200px;
+  width: 200px;
 }

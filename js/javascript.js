@@ -1,11 +1,12 @@
 $(document).ready(function() {
-  // TO DO:
-  // styles for 'ingredients' class
-  // create #searchArea (or change target id)
   // stand in variables for testing
   var ingredients = ["carrots", "butter", "chicken"];
   var recipeId = "374165";
   var imageRoot = "https://spoonacular.com/recipeImages/";
+
+  // EDIT for templates
+  // load landing page
+  landingPage();
 
   // function for recipe ajax query.
   function getRecipeDetails(queryId) {
@@ -91,12 +92,13 @@ $(document).ready(function() {
           var newResult = $("<div>", {
             id: response.results[i].id,
             class: "recipeCard",
-            html: response.results[i].title
+            html: "<h5>" + response.results[i].title + "</h5>"
           });
           newResult.append(
             $("<img>", {
               src: imageRoot + response.results[i].image,
-              alt: response.results[i].image
+              alt: response.results[i].image,
+              class: "recipeCardImg"
             })
           );
 
@@ -108,98 +110,18 @@ $(document).ready(function() {
   }
 
   // Get ingredients from array and print to target div
-  function showIngredients(target) {
-    // set the target div depending on the value of "target"
-    var target = "sidebar" ? $("#ingredientsList") : $("#ingredientsMain");
-    for (var i = 0; i < ingredients.length; i++) {
-      target.append(
-        $("<div>", {
-          class: "ingredients",
-          html: ingredients[i]
-        })
-      );
-    }
-  }
-
-  // Build sidebar on search results page
-  function showSidebar() {
-    $("#root").append(
-      $("<div>", {
-        id: "sidebarContainer",
-        class: "cell medium-auto medium-cell-block-container"
-      })
-    );
-    $("#sidebarContainer").append(
-      $("<div>", {
-        id: "sidebarGrid",
-        class: "grid-x grid-padding-x"
-      })
-    );
-
-    // sidebar where search box and options go
-    var sidebar = $("<div>", {
-      id: "sidebar",
-      class: "cell medium-4 medium-cell-block-y"
-    });
-
-    // fill in the sidebar
-    sidebar.append(
-      $("<h3>", {
-        html: "Search Ingredients:"
-      })
-    );
-    sidebar.append(
-      $("<input>", {
-        type: "search",
-        placeholder: "Search:"
-      })
-    );
-    sidebar.append(
-      $("<div>", {
-        id: "ingredient-pill-box"
-      })
-    );
-    //$("#ingredient-pill-box").empty();
-    for (var i = 0; i < ingredients.length; i++) {
-      console.log(ingredients[i]);
-      $("#ingredient-pill-box").append(
-        $("<div>", {
-          class: "ingredient-pill",
-          html: ingredients[i]
-        })
-      );
-    }
-    sidebar.append(
-      $("<input>", {
-        id: "sidebarSearch",
-        type: "submit",
-        value: "Submit"
-      })
-    );
-    $("#sidebarGrid").append(sidebar);
-    $("#sidebarContainer").append(sidebar);
-  }
-
-  function showResults() {
-    // results container for search results
-    var resultsContainer = $("<div>", {
-      id: "resultsContainer",
-      class: "cell medium-8 medium-cell-block-y"
-    });
-
-    resultsContainer.append(
-      $("<h3>", {
-        text: "Recipe Search Results:"
-      })
-    );
-
-    resultsContainer.append(
-      $("<div>", {
-        id: "results"
-      })
-    );
-    $("#sidebarContainer").append(resultsContainer);
-  }
+  /* function showIngredients(target) {
+      // set the target div depending on the value of "target"
+      var target = "sidebar" ? $("#ingredientsList") : $("#ingredientsMain");
+      for (var i = 0; i < ingredients.length; i++) {
+        target.append(
+          $("<div>", {
+            class: "ingredients",
+            html: ingredients[i]
+          })
+        );
+      }
+    } */
 
   $(document).on("click", "#sidebarSearch", function(e) {
     e.preventDefault();
@@ -208,11 +130,9 @@ $(document).ready(function() {
   });
 
   $("#mainInput").on("keypress", function(e) {
-    /*  e.preventDefault(); */
     if (e.which == 13) {
       ingredients.push($("#mainInput").val());
       $("#ingredient-pill-box").empty();
-      //showIngredients("main");
       for (var i = 0; i < ingredients.length; i++) {
         $("#ingredient-pill-box").append(
           $("<div>", {
@@ -226,8 +146,10 @@ $(document).ready(function() {
 
   $("#mainFind").on("click", function() {
     $("#root").empty();
-    showSidebar();
-    showResults();
+    // EDIT to add templates
+    /* showSidebar(); */
+    getRecipes();
+    resultsPage(ingredients, "");
     //showIngredients("sidebar");
   });
 });
