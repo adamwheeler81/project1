@@ -1,3 +1,4 @@
+//Build landingPage static html
 function landingPage() {
   $("#root").empty();
   $("#root").html(`
@@ -14,11 +15,11 @@ function landingPage() {
 
       <div id="ingredient-pill-box"></div>
       <div class="action-container">
-        <button type="button" id="mainFind" class="search-cta btn btn-secondary">
+        <button type="button" id="recipeFind" class="search-cta btn btn-secondary">
           Find a recipe
         </button>
 
-        <button type="button" class="search-cta btn btn-secondary">
+        <button type="button" id="restaurantFind" class="search-cta btn btn-secondary">
           Find a restaurant
         </button>
       </div>
@@ -28,30 +29,51 @@ function landingPage() {
 `);
 }
 
-function resultsPage(ingredients, results) {
+//Build resultsPage static html
+function resultsPage(sidebar) {
   $("#root").empty();
   $("#root").html(`
         <div id="resultsContainer" class="cell medium-auto medium-cell-block-container">
             <div id="resultsGrid" class="grid-x grid-padding-x">
                 <div id="sidebar" class="cell medium-4 medium-cell-block-y">
-                    <h3>Search Ingredients:</h3>
-                    <input type="search" placeholder="Search"></input>
-                    <div id="ingredient-pill-box">
-                        ${ingredients.map(
-                          (ingredient, index) =>
-                            `<div class="ingredient-pill" id=${index}>${ingredient}</div>`
-                        )}
-                    </div>
-                    <input id="sidebarSearch" type="submit" value="Submit">
+                    ${sidebar}
                 </div>
                 <div id="resultsContainer"  class="cell medium-8 medium-cell-block-y">
                 <h3>Recipe Search Results:</h3>
-                    <div id="results">
-                    ${typeof results == "undefined" ? `` : results} 
+                    <div id="results"> 
+                    
                     </div>
                 </div>
 
             </div>
         </div> 
     `);
+}
+
+//Build recipe sidebar
+function getIngredientsSidebar(ingredients) {
+  return `
+    <h3>Search Ingredients:</h3>
+    <input type="search" placeholder="Search"></input>
+    <div id="ingredient-pill-box">
+        ${ingredients.map(
+          (ingredient, index) =>
+            `<div class="ingredient-pill" id=${index}>${ingredient}</div>`
+        )}
+    </div>
+    <input id="sidebarSearch" type="submit" value="Submit"></input>`;
+}
+
+//Build restaurants sidebar
+function getRestaurantsSidebar(restaurantSearches) {
+  return `
+    <h3>Search Cuisines:</h3>
+    <input type="search" placeholder="Search"></input>
+    <div id="ingredient-pill-box">
+        ${restaurantSearches.map(
+          (restaurantSearchTerm, index) =>
+            `<div class="ingredient-pill" id=${index}>${restaurantSearchTerm}</div>`
+        )}
+    </div>
+    <input id="sidebarSearch" type="submit" value="Submit"></input>`;
 }

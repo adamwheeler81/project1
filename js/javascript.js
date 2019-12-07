@@ -1,13 +1,17 @@
 $(document).ready(function() {
+
   // stand in variables for testing
-  var ingredients = ["carrots", "butter", "chicken"];
-  var recipeId = "374165";
-  var imageRoot = "https://spoonacular.com/recipeImages/";
+  var ingredients = [];
+  var restaurantSearches = [];
 
   // EDIT for templates
   // load landing page
   landingPage();
 
+
+///////////////////////////////////////////////////////////////////
+ //Search for recipes 
+  
   // function for recipe ajax query.
   function getRecipeDetails(queryId) {
     // build results elements
@@ -78,6 +82,7 @@ $(document).ready(function() {
       "&instructionsRequired=true&query=" +
       sQueryObject.queryIngredients;
     sSettings.url = query;
+
     $.ajax(sSettings).done(function(response) {
       if (response.results.totalResults == 0) {
         console.log("No recipes found. Please search again.");
@@ -89,12 +94,16 @@ $(document).ready(function() {
         console.log(response);
 
         for (var i = 0; i < response.results.length; i++) {
-          var newResult = $("<div>", {
+          var recipeCard = $("<div>", {
             id: response.results[i].id,
-            class: "recipeCard",
-            html: "<h5>" + response.results[i].title + "</h5>"
+            class: "recipeCard"
           });
-          newResult.append(
+          recipeCard.append(
+            $("<h5>", {
+              html: response.results[i].title
+            })
+          );
+          recipeCard.append(
             $("<img>", {
               src: imageRoot + response.results[i].image,
               alt: response.results[i].image,
@@ -102,8 +111,7 @@ $(document).ready(function() {
             })
           );
 
-          $("#results").append(newResult);
-          //console.log(response.results[i]);
+          $("#results").append(recipeCard);
         }
       }
     });
@@ -131,25 +139,60 @@ $(document).ready(function() {
 
   $("#mainInput").on("keypress", function(e) {
     if (e.which == 13) {
-      ingredients.push($("#mainInput").val());
+      // add new ingredient to array
+      sQueryObject.queryIngredients.push($("#mainInput").val());
+      //sQueryObject.queryIngredients.push($("#mainInput").val());
+      // clear input
+      $("#mainInput").val("");
       $("#ingredient-pill-box").empty();
-      for (var i = 0; i < ingredients.length; i++) {
+      for (var i = 0; i < sQueryObject.queryIngredients.length; i++) {
         $("#ingredient-pill-box").append(
           $("<div>", {
             class: "ingredient-pill",
-            html: ingredients[i]
+            html: sQueryObject.queryIngredients[i]
           })
         );
       }
     }
   });
 
-  $("#mainFind").on("click", function() {
+  $("#recipeFind").on("click", function() {
     $("#root").empty();
     // EDIT to add templates
-    /* showSidebar(); */
+
     getRecipes();
-    resultsPage(ingredients, "");
+    resultsPage(getIngredientsSidebar(sQueryObject.queryIngredients));
     //showIngredients("sidebar");
+  });
+
+
+
+///////////////////////////////////////////////////////////////////
+  //Search for Restaurant
+
+
+  $('#restaurantFind').on('click', function() {
+
+		//Find user's geolocation
+		navigator.geolocation.getCurrentPosition(function(position) {
+			zSettings.url =
+				zQueryStr +
+				'geocode?lat=' +
+				position.coords.latitude +
+				'&lon=' +
+				position.coords.longitude;
+
+
+			$.ajax(zSettings).done(function(res) {
+				$('#results').empty();
+				var newRestaurantDialog = $('<dialog>').attr(
+					'id',
+					'restaurants'
+				);
+				for (var i = 0; i < res.nearby_restaurants.length; i++) {
+          console.log(res.nearby_restaurants[i].restaurant.name);
+        }  
+      })
+    })
   });
 });
