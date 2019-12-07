@@ -2,24 +2,23 @@
 <html>
   <head>
     <title>Gluten-Tootin'</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="navbar">Gluten-Tootin'</div>
-
-    <div class="container">
-      <div class="search input searchRecipes">
+    <div class="grid-x grid-padding-x grid-margin-x">
+      <div class="large-6 medium-6 cell search input searchRecipes">
         <span id="searchRecipes">Search For Recipes</span>
       </div>
-      <div class="search input searchRestaurants">
+      <div class="large-6 medium-6 cell search input searchRestaurants">
         <span id="searchRestaurants">Search For Restaurants</span>
       </div>
 
-      <div id="results">
-        <!--         <dialog id="recipe"> </dialog>
-        <dialog id="ingredients"> </dialog> -->
-      </div>
+      <div id="results" class="grid-container"></div>
     </div>
+
     <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"
