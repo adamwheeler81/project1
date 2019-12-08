@@ -1,23 +1,19 @@
-.navbar {
-  padding: 20px;
-  text-align: center;
-  background-color: beige;
-}
 p {
   margin-top: 0;
   margin-bottom: 1rem;
 }
+
 button,
 input {
   overflow: visible;
 }
 
-/* .container {
-  display: grid;
-  grid-template-columns: 2fr 5fr 5fr 2fr;
-  grid-template-rows: 2fr 16fr;
+ul,
+li {
+  padding: 2px;
+  list-style: none;
 }
- */
+
 .input {
   border-radius: 5px;
   padding: 10px;
@@ -27,86 +23,11 @@ input {
   cursor: pointer;
 }
 
-#recipeInfo {
-  width: 75%;
-}
-
-.optionHeader {
-  width: 100%;
-  padding: 5px;
-  margin: 5px;
-  border-bottom: 1px solid rgb(10, 10, 10);
-}
-
-#cuisineDiv {
-  width: 100%;
-  padding: 5px;
-  margin: 5px;
-  border-bottom: 1px solid rgb(10, 10, 10);
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-}
-
-.listItem {
-  list-style: none;
-}
-
-#submitDiv {
-  /*  display: grid;
-  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
-  grid-template-rows: 2fr; */
-}
-
-#submitSpan {
-  font-weight: bold;
-  padding: 5px;
-  margin: 5px;
-  background-color: beige;
-  border: 1px solid beige;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#submitBtn {
-  /* grid-column: 5 / 5; */
-  font-weight: bold;
-}
-
-.optionsBtn,
-#submitBtn,
-.listItem {
-  padding: 5px;
-  margin: 5px;
-  background-color: beige;
-  border: 1px solid beige;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.optionsBtn:hover,
-#submitBtn:hover,
-.listItem:hover {
-  background-color: darkkhaki;
-  color: #ffffff;
-}
-
-.optionsBtn:active,
-#submitBtn:active,
-.listItem:active {
-  background-color: #efdbfd;
-}
-
-.addedOpt {
-  background-color: orange;
-}
-
 .landing-page-container {
   width: 100vw;
   height: 100vh;
-  background-image: url(assets/images/table-on-wooden-plank-326279.jpg);
+  background-image: url(https://storage.googleapis.com/assets.getwellio.com/fridgetotable.com/landing-background.jpg);
+  /* background-image: url(assets/images/table-on-wooden-plank-326279.jpg); */
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -165,7 +86,7 @@ ul {
   margin-top: 0.5rem;
 }
 
-.action-container .search-cta {
+.search-cta {
   background: #ffcc2a;
   border: none;
   outline: none;
@@ -175,19 +96,6 @@ ul {
   font-weight: 600;
   font-size: 1.2rem;
 }
-
-/* .landing-page-container .input-wrapper input {
-  outline: none;
-  border: 1px solid #a8a8a8;
-  border-radius: 0.2rem;
-  padding-left: 3rem;
-  position: relative;
-  background-image: url(assets/images/icons8-ice-cream-24.png);
-  background-repeat: no-repeat;
-  background-position: 2%;
-  width: 100%;
-  height: 2.7rem;
-} */
 
 .ingredient-pill {
   position: relative;
@@ -205,9 +113,40 @@ ul {
 }
 
 .recipeCard {
+  float: left;
+  padding: 5px;
+  cursor: pointer;
+  border: solid 1px black;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .recipeCardImg {
   height: 200px;
   width: 200px;
+}
+
+#recipeModalImg {
+  float: left;
+  padding: 10px;
+}
+
+#recipeModalButtonContainer {
+  text-align: center;
+  width: 100%;
+}
+
+#recipeModalButtonContainer button,
+#recipeModalButtonContainer a {
+  display: inline;
+}
+
+#recipeModalIngredients {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.recipeModalIngredient {
+  width: 50%;
 }
