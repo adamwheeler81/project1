@@ -58,13 +58,23 @@ function getRecipeCard(recipe) {
 function getRecipeModal() {
   return `
         <dialog id="recipeModal">
-            <h3 id="recipeModalTitle"></h3>
-            <p id="recipeModalInfo"><p>
-            <img id="recipeModalImg">
-            <div id="recipeModalSteps">
-                <ul id="recipeModalList">
-                </ul>
+            <div class="grid-x grid-margin-x">
+                <div class="cell column medium-6">
+                    <img id="recipeModalImg">    
+                </div>
+                <div id="recipeModalInfoContainer" class="cell column medium-6">
+                    <h3 id="recipeModalTitle"></h3>
+                    <span>Ingredients:</span>
+                    <div id="recipeModalIngredients">
+
+                    </div>
+                    
+                </div>
             </div>
+            <div id="recipeModalButtonContainer">
+                        <button type="button" id="recipeModalSave" class="search-cta">Save</button>
+                        <a id="recipeModalUrl" class="search-cta btn btn-secondary" target="_blank">View Recipe</a>
+                    </div>
         </dialog>
     `;
 }

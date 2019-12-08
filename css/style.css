@@ -125,3 +125,28 @@ li {
   height: 200px;
   width: 200px;
 }
+
+#recipeModalImg {
+  float: left;
+  padding: 10px;
+}
+
+#recipeModalButtonContainer {
+  text-align: center;
+  width: 100%;
+}
+
+#recipeModalButtonContainer button,
+#recipeModalButtonContainer a {
+  display: inline;
+}
+
+#recipeModalIngredients {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.recipeModalIngredient {
+  width: 50%;
+}

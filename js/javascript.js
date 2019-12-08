@@ -9,25 +9,20 @@ $(document).ready(function() {
     sSettings.url = query;
 
     $.ajax(sSettings).done(function(response) {
-      $("#recipeModalTitle").text(response.title);
       console.log(response);
-      for (var i = 0; i < response.analyzedInstructions.length; i++) {
-        $("#recipeModalList").append("<span>", {
-          class: "recipeModalListStep",
-          html: response.analyzedInstructions[i].name
-        });
-        for (
-          var j = 0;
-          j < response.analyzedInstructions[i].steps.length;
-          j++
-        ) {
-          $("#recipeModalList").append("<li>", {
-            class: "steps",
-            html: response.analyzedInstructions[i].steps[j].step
-          });
-          //console.log(response.analyzedInstructions[i].steps[j].step);
-        }
+      $("#recipeModalIngredients").empty();
+      $("#recipeModalTitle").text(response.title);
+      $("#recipeModalImg").attr("src", response.image);
+      for (var i = 0; i < response.extendedIngredients.length; i++) {
+        $("#recipeModalIngredients").append(
+          $("<li>", {
+            class: "recipeModalIngredient",
+            html: response.extendedIngredients[i].name
+          })
+        );
+        console.log(response.extendedIngredients[i].name);
       }
+      $("#recipeModalUrl").attr("href", response.sourceUrl);
     });
   }
 
