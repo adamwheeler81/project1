@@ -33,10 +33,12 @@ function getIngredientsSidebar(ingredients) {
     <h3>Search Ingredients:</h3>
     <input type="text" id="mainInput"></input>
     <div id="ingredient-pill-box">
-        ${ingredients.map(
-          (ingredient, index) =>
-            `<div class="ingredient-pill" id=${index}>${ingredient}</div>`
-        )}
+        ${ingredients
+          .map(
+            (ingredient, index) =>
+              `<div class="ingredient-pill" id=${index}>${ingredient}</div>`
+          )
+          .join("")}
     </div>
     <button type="button" id="recipeFind" class="search-cta btn btn-secondary">Submit</button>`;
 }
