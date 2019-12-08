@@ -1,62 +1,33 @@
 $(document).ready(function() {
-  // stand in variables for testing
-  var ingredients = [];
-
-  // EDIT for templates
   // load landing page
   landingPage();
 
   // function for recipe ajax query.
   function getRecipeDetails(queryId) {
-    // build results elements
-    var newDialog = $("<dialog>", {
-      id: "recipeInfo"
-    });
-    var newDiv = $("<div>", {
-      class: "queryResult"
-    });
-    var newTitle = $("<h2>", {
-      class: "recipeTitle"
-    });
-
     // build query
     var query = sQueryStr + queryId + "/information";
-
     sSettings.url = query;
 
     $.ajax(sSettings).done(function(response) {
+      $("#recipeModalTitle").text(response.title);
       console.log(response);
-      newTitle.text(response.title);
-      var steps = $("<div>", {
-        id: "stepsDiv"
-      });
       for (var i = 0; i < response.analyzedInstructions.length; i++) {
-        steps.append(
-          $("<h4>", {
-            text: response.analyzedInstructions[i].name
-          })
-        );
+        $("#recipeModalList").append("<span>", {
+          class: "recipeModalListStep",
+          html: response.analyzedInstructions[i].name
+        });
         for (
           var j = 0;
           j < response.analyzedInstructions[i].steps.length;
           j++
         ) {
-          steps.append(
-            $("<span>", {
-              class: "steps",
-              text: response.analyzedInstructions[i].steps[j].step
-            })
-          );
+          $("#recipeModalList").append("<li>", {
+            class: "steps",
+            html: response.analyzedInstructions[i].steps[j].step
+          });
           //console.log(response.analyzedInstructions[i].steps[j].step);
         }
       }
-
-      newDiv.append(newTitle);
-      newDiv.append(steps);
-      newDialog.append(newDiv);
-      // append dialog to #results and show
-      $("#results").append(newDialog);
-      newDialog.show();
     });
   }
 
@@ -84,7 +55,6 @@ $(document).ready(function() {
         );
       } else {
         // iterate through results
-        console.log(response);
         for (var i = 0; i < response.results.length; i++) {
           $("#results").append(getRecipeCard(response.results[i]));
         }
@@ -92,27 +62,23 @@ $(document).ready(function() {
     });
   }
 
-  // Get ingredients from array and print to target div
-  /* function showIngredients(target) {
-      // set the target div depending on the value of "target"
-      var target = "sidebar" ? $("#ingredientsList") : $("#ingredientsMain");
-      for (var i = 0; i < ingredients.length; i++) {
-        target.append(
-          $("<div>", {
-            class: "ingredients",
-            html: ingredients[i]
-          })
-        );
-      }
-    } */
-
-  $(document).on("click", "#sidebarSearch", function(e) {
-    e.preventDefault();
-    sQueryObject.queryIngredients = ingredients;
+  // EVENT HANDLERS
+  //$("#recipeFind").on("click", function() {
+  $(document).on("click", "#recipeFind", function() {
+    $("#root").empty();
+    // resultsPage: create results page from template and fill in with ingredients sidebar
+    resultsPage(getIngredientsSidebar(sQueryObject.queryIngredients));
+    // getRecipes: fill #results div with query results
     getRecipes();
   });
 
-  $("#mainInput").on("keypress", function(e) {
+  $("#restaurantFind").on("click", function() {
+    $("#root").empty();
+    resultsPage(getRestaurantSidebar());
+    getRestaurants();
+  });
+
+  $(document).on("keypress", "#mainInput", function(e) {
     if (e.which == 13) {
       // add new ingredient to array
       sQueryObject.queryIngredients.push($("#mainInput").val());
@@ -130,15 +96,9 @@ $(document).ready(function() {
     }
   });
 
-  $("#recipeFind").on("click", function() {
-    $("#root").empty();
-    resultsPage(getIngredientsSidebar(sQueryObject.queryIngredients));
-    getRecipes();
+  $(document).on("click", ".recipeCard", function() {
+    $("#results").append(getRecipeModal());
+    getRecipeDetails($(this).attr("id"));
+    $("#recipeModal").show();
   });
-});
-
-$("#restaurantFind").on("click", function() {
-  $("#root").empty();
-  resultsPage(getRestaurantSidebar());
-  getRestaurants();
 });

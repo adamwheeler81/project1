@@ -31,20 +31,20 @@ function landingPage() {
 function getIngredientsSidebar(ingredients) {
   return `
     <h3>Search Ingredients:</h3>
-    <input type="search" placeholder="Search"></input>
+    <input type="text" id="mainInput"></input>
     <div id="ingredient-pill-box">
         ${ingredients.map(
           (ingredient, index) =>
             `<div class="ingredient-pill" id=${index}>${ingredient}</div>`
         )}
     </div>
-    <input id="sidebarSearch" type="submit" value="Submit"></input>`;
+    <button type="button" id="recipeFind" class="search-cta btn btn-secondary">Submit</button>`;
 }
 
 function getRecipeCard(recipe) {
   return `
-        <div class="recipeCard">
-            <h3>${recipe.title}</h3>
+        <div id="${recipe.id}" class="recipeCard cell medium-3">
+            <h5>${recipe.title}</h5>
             <ul>
                 <li><i>Ready in ${recipe.readyInMinutes} minutes</i></li>
                 <li><i>Serves: ${recipe.servings}</i></li>
@@ -55,17 +55,31 @@ function getRecipeCard(recipe) {
     `;
 }
 
+function getRecipeModal() {
+  return `
+        <dialog id="recipeModal">
+            <h3 id="recipeModalTitle"></h3>
+            <p id="recipeModalInfo"><p>
+            <img id="recipeModalImg">
+            <div id="recipeModalSteps">
+                <ul id="recipeModalList">
+                </ul>
+            </div>
+        </dialog>
+    `;
+}
+
 function resultsPage(sidebar) {
   $("#root").empty();
   $("#root").html(`
         <div id="resultsContainer" class="cell medium-auto medium-cell-block-container">
             <div id="resultsGrid" class="grid-x grid-padding-x">
-                <div id="sidebar" class="cell medium-4 medium-cell-block-y">
+                <div id="sidebar" class="cell medium-2 medium-cell-block-y">
                     ${sidebar}
                 </div>
-                <div id="resultsContainer" class="cell medium-8 medium-cell-block-y">
+                <div id="resultsContainer" class="cell medium-10 medium-cell-block">
                 <h3>Search Results:</h3>
-                    <div id="results"> 
+                    <div id="results" class="grid-x grid-padding-x"> 
                     </div>
                 </div>
             </div>
