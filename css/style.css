@@ -26,8 +26,7 @@ li {
 .landing-page-container {
   width: 100vw;
   height: 100vh;
-  background-image: url(https://storage.googleapis.com/assets.getwellio.com/fridgetotable.com/landing-background.jpg);
-  /* background-image: url(assets/images/table-on-wooden-plank-326279.jpg); */
+  background-image: url(../assets/images/table-on-wooden-plank-326279.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
