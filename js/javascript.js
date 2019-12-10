@@ -170,29 +170,82 @@ $(document).ready(function() {
 ///////////////////////////////////////////////////////////////////
   //Search for Restaurant
 
+//Find user's geolocation
+function getGeolocation() {
+  console.log("Geolocation working ")
+navigator.geolocation.getCurrentPosition(function(position) {
+  zSettings.url =
+    zQueryStr +
+    'geocode?lat=' +
+    position.coords.latitude +
+    '&lon=' +
+    position.coords.longitude;
+  console.log
+})
+};
 
-  $('#restaurantFind').on('click', function() {
+//Get restaurant options
+function getRestaurants() {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    zSettings.url =
+      zQueryStr +
+      'geocode?lat=' +
+      position.coords.latitude +
+      '&lon=' +
+      position.coords.longitude;
 
-		//Find user's geolocation
-		navigator.geolocation.getCurrentPosition(function(position) {
-			zSettings.url =
-				zQueryStr +
-				'geocode?lat=' +
-				position.coords.latitude +
-				'&lon=' +
-				position.coords.longitude;
+
+    $.ajax(zSettings).done(function(res) {
+      $('#results').empty();
+      var newRestaurantDialog = $('<dialog>').attr(
+        'id',
+        'restaurants'
+      );
+      for (var i = 0; i < res.nearby_restaurants.length; i++) {
+        let current = res.nearby_restaurants[i].restaurant;
+        console.log("Name: " + current.name);
+        console.log("Image: " + current.featured_image);
+        console.log("Cuisines: " + current.cuisines);
+        console.log("Price Range: " + current.price_range);
+        console.log("User Rating: " + current.user_rating.aggregate_rating);
+        console.log("Link to Menu: " + current.menu_url);
+        console.log("Address: " + current.location.address + ", " + 
+          current.location.city + ", " + current.location.zipcode);
 
 
-			$.ajax(zSettings).done(function(res) {
-				$('#results').empty();
-				var newRestaurantDialog = $('<dialog>').attr(
-					'id',
-					'restaurants'
-				);
-				for (var i = 0; i < res.nearby_restaurants.length; i++) {
-          console.log(res.nearby_restaurants[i].restaurant.name);
-        }  
-      })
-    })
+      }
+      console.log(res)
+      });
+    });
+};
+
+/*    function getRestaurants() {
+  getGeolocation();
+
+  $.ajax(zSettings).done(function(res) {
+    console.log(res);
+    $('#results').empty();
+    var newRestaurantDialog = $('<dialog>').attr(
+      'id',
+      'restaurants'
+    );
+    for (var i = 0; i < res.nearby_restaurants.length; i++) {
+      console.log(res.nearby_restaurants[i].restaurant.name);
+    }
   });
+};*/
+
+  $("#restaurantFind").on("click", /*"#sidebarSearch",*/ function(e) {
+    console.log("click working")
+    e.preventDefault();
+    sQueryObject.queryRestaurants = restaurantSearches;
+
+    getRestaurants();
+    //getRestaurantDetails();
+  });
+
+
+
+
+
 });
