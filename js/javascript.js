@@ -203,6 +203,53 @@ function getRestaurants() {
       );
       for (var i = 0; i < res.nearby_restaurants.length; i++) {
         let current = res.nearby_restaurants[i].restaurant;
+        let resultTotal = res.nearby_restaurants.length;
+
+        //Results page 
+          //Use template for results
+          //Only need name and picture
+          //Need to add something if there is no image
+        console.log("Name: " + current.name);
+        console.log("Image: " + current.featured_image);
+        console.log("Cuisines: " + current.cuisines);
+        console.log("Price Range: " + current.price_range);
+        console.log("User Rating: " + current.user_rating.aggregate_rating);
+        console.log("Link to Menu: " + current.menu_url);
+        console.log("Address: " + current.location.address + ", " + 
+          current.location.city + ", " + current.location.zipcode);
+        console.log("Results: " + res.nearby_restaurants.length);
+
+      }
+      console.log(res)
+      });
+    });
+};
+
+//Get restaurant details
+function getRestaurants() {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    zSettings.url =
+      zQueryStr +
+      'geocode?lat=' +
+      position.coords.latitude +
+      '&lon=' +
+      position.coords.longitude;
+
+
+    $.ajax(zSettings).done(function(res) {
+      $('#results').empty();
+      var newRestaurantDialog = $('<dialog>').attr(
+        'id',
+        'restaurants'
+      );
+      for (var i = 0; i < res.nearby_restaurants.length; i++) {
+        let current = res.nearby_restaurants[i].restaurant;
+
+        //Details pop-up
+          //Use template for results
+          //Only need name and picture
+          //Need to add something if there is no image
+          //Nee to add something if there is no link to menu
         console.log("Name: " + current.name);
         console.log("Image: " + current.featured_image);
         console.log("Cuisines: " + current.cuisines);
@@ -212,28 +259,12 @@ function getRestaurants() {
         console.log("Address: " + current.location.address + ", " + 
           current.location.city + ", " + current.location.zipcode);
 
-
       }
       console.log(res)
       });
     });
 };
 
-/*    function getRestaurants() {
-  getGeolocation();
-
-  $.ajax(zSettings).done(function(res) {
-    console.log(res);
-    $('#results').empty();
-    var newRestaurantDialog = $('<dialog>').attr(
-      'id',
-      'restaurants'
-    );
-    for (var i = 0; i < res.nearby_restaurants.length; i++) {
-      console.log(res.nearby_restaurants[i].restaurant.name);
-    }
-  });
-};*/
 
   $("#restaurantFind").on("click", /*"#sidebarSearch",*/ function(e) {
     console.log("click working")
