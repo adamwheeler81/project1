@@ -170,22 +170,9 @@ $(document).ready(function() {
 ///////////////////////////////////////////////////////////////////
   //Search for Restaurant
 
-//Find user's geolocation
-function getGeolocation() {
-  console.log("Geolocation working ")
-navigator.geolocation.getCurrentPosition(function(position) {
-  zSettings.url =
-    zQueryStr +
-    'geocode?lat=' +
-    position.coords.latitude +
-    '&lon=' +
-    position.coords.longitude;
-  console.log
-})
-};
-
-//Get restaurant options
-function getRestaurants() {
+  //Find user's geolocation
+  function getGeolocation() {
+    console.log("Geolocation working ")
   navigator.geolocation.getCurrentPosition(function(position) {
     zSettings.url =
       zQueryStr +
@@ -193,77 +180,89 @@ function getRestaurants() {
       position.coords.latitude +
       '&lon=' +
       position.coords.longitude;
+    console.log
+  })
+  };
+
+  //Get restaurant options
+  function getRestaurants() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      zSettings.url =
+        zQueryStr +
+        'geocode?lat=' +
+        position.coords.latitude +
+        '&lon=' +
+        position.coords.longitude;
 
 
-    $.ajax(zSettings).done(function(res) {
-      $('#results').empty();
-      var newRestaurantDialog = $('<dialog>').attr(
-        'id',
-        'restaurants'
-      );
-      for (var i = 0; i < res.nearby_restaurants.length; i++) {
-        let current = res.nearby_restaurants[i].restaurant;
-        let resultTotal = res.nearby_restaurants.length;
+      $.ajax(zSettings).done(function(res) {
+        //If no gluten-free restuarants are found, display message
+        if (res.nearby_restaurants.length == 0) {
+          console.log("No recipes found. Please search again.");
+          $("#results").text(
+            "Sorry! No Gluten Tootin' approved restaurants found. Please revise your search terms and try again."
+          );
+        } else {
+        console.log(res)
+        
+          //If restaurants are found
+          for (var i = 0; i < res.nearby_restaurants.length; i++) {
+            let current = res.nearby_restaurants[i].restaurant;
+            let resultTotal = res.nearby_restaurants.length;
 
-        //Results page 
-          //Use template for results
-          //Only need name and picture
-          //Need to add something if there is no image
-        console.log("Name: " + current.name);
-        console.log("Image: " + current.featured_image);
-        console.log("Cuisines: " + current.cuisines);
-        console.log("Price Range: " + current.price_range);
-        console.log("User Rating: " + current.user_rating.aggregate_rating);
-        console.log("Link to Menu: " + current.menu_url);
-        console.log("Address: " + current.location.address + ", " + 
-          current.location.city + ", " + current.location.zipcode);
-        console.log("Results: " + res.nearby_restaurants.length);
-
-      }
-      console.log(res)
+            //Results page 
+              //Use template for results
+              //Only need name, picture, and cuisine
+              //Need to add something if there is no image
+            console.log("Name: " + current.name);
+            console.log("Image: " + current.featured_image);
+            console.log("Cuisines: " + current.cuisines);
+          };
+        };
       });
     });
-};
+  };
 
-//Get restaurant details
-function getRestaurants() {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    zSettings.url =
-      zQueryStr +
-      'geocode?lat=' +
-      position.coords.latitude +
-      '&lon=' +
-      position.coords.longitude;
+  //Get restaurant details
+  //Needs to turn into a click event added to each result within get Restaurants
+  //Can we create a function to write all the html/add click event in one function?
+  function getRestaurantDetails() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      zSettings.url =
+        zQueryStr +
+        'geocode?lat=' +
+        position.coords.latitude +
+        '&lon=' +
+        position.coords.longitude;
+      
+      $.ajax(zSettings).done(function(res) {
+        $('#results').empty();
+        var newRestaurantDialog = $('<dialog>').attr(
+          'id',
+          'restaurants'
+        );
+        for (var i = 0; i < res.nearby_restaurants.length; i++) {
+          let current = res.nearby_restaurants[i].restaurant;
 
+          //Details pop-up
+            //Use template for results
+            //Only need name and picture
+            //Need to add something if there is no image
+            //Nee to add something if there is no link to menu
+          console.log("Name: " + current.name);
+          console.log("Image: " + current.featured_image);
+          console.log("Cuisines: " + current.cuisines);
+          console.log("Price Range: " + current.price_range);
+          console.log("User Rating: " + current.user_rating.aggregate_rating);
+          console.log("Link to Menu: " + current.menu_url);
+          console.log("Address: " + current.location.address + ", " + 
+            current.location.city + ", " + current.location.zipcode);
 
-    $.ajax(zSettings).done(function(res) {
-      $('#results').empty();
-      var newRestaurantDialog = $('<dialog>').attr(
-        'id',
-        'restaurants'
-      );
-      for (var i = 0; i < res.nearby_restaurants.length; i++) {
-        let current = res.nearby_restaurants[i].restaurant;
-
-        //Details pop-up
-          //Use template for results
-          //Only need name and picture
-          //Need to add something if there is no image
-          //Nee to add something if there is no link to menu
-        console.log("Name: " + current.name);
-        console.log("Image: " + current.featured_image);
-        console.log("Cuisines: " + current.cuisines);
-        console.log("Price Range: " + current.price_range);
-        console.log("User Rating: " + current.user_rating.aggregate_rating);
-        console.log("Link to Menu: " + current.menu_url);
-        console.log("Address: " + current.location.address + ", " + 
-          current.location.city + ", " + current.location.zipcode);
-
-      }
-      console.log(res)
+        }
+        console.log(res)
+        });
       });
-    });
-};
+  };
 
 
   $("#restaurantFind").on("click", /*"#sidebarSearch",*/ function(e) {

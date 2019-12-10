@@ -64,6 +64,7 @@ function getIngredientsSidebar(ingredients) {
     <input id="sidebarSearch" type="submit" value="Submit"></input>`;
 }
 
+
 //Build restaurants sidebar
 function getRestaurantsSidebar(restaurantSearches) {
   return `
@@ -76,4 +77,39 @@ function getRestaurantsSidebar(restaurantSearches) {
         )}
     </div>
     <input id="sidebarSearch" type="submit" value="Submit"></input>`;
+}
+
+//Build Restuarant card with details
+function getRestaurantCard(restaurant) {
+  return `
+        <div id="${restaurant.id}" class="restaurantCard cell medium-3">
+            <h5>${restaurant.name}</h5>
+            <img src="${imageRoot + restaurant.featured_image}" 
+            alt="${restaurant.featured_image}" class="restaurantCardImg">
+        </div>
+    `;
+}
+
+function getRestaurantModal() {
+  return `
+        <dialog id="restaurant Modal">
+            <div class="grid-x grid-margin-x">
+                <div class="cell column medium-6">
+                    <img id="restaurantModalImg">    
+                </div>
+                <div id="restaurantModalInfoContainer" class="cell column medium-6">
+                    <h3 id="restaurantModalTitle"></h3>
+                    <span>Info:</span>
+                    <div id="ResaurantModalInfo">
+
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="RestaurantModalButtonContainer">
+                        <button type="button" id="restaurantModalSave" class="search-cta">Save</button>
+                        <a id="restaurantModalUrl" class="search-cta btn btn-secondary" target="_blank">View Restaurant</a>
+                    </div>
+        </dialog>
+    `;
 }
