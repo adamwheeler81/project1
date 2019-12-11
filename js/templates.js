@@ -29,22 +29,75 @@ function landingPage() {
 `);
 }
 
-//Build resultsPage static html
+
+function getIngredientsSidebar(ingredients) {
+  return `
+    <h3>Search Ingredients:</h3>
+    <input type="text" id="mainInput"></input>
+    <div id="ingredient-pill-box">
+        ${ingredients
+          .map(
+            (ingredient, index) =>
+              `<div class="ingredient-pill" id=${index}>${ingredient}</div>`
+          )
+          .join("")}
+    </div>
+    <button type="button" id="recipeFind" class="search-cta btn btn-secondary">Submit</button>`;
+}
+
+function getRecipeCard(recipe) {
+  return `
+        <div id="${recipe.id}" class="recipeCard cell medium-3">
+            <h5>${recipe.title}</h5>
+            <ul>
+                <li><i>Ready in ${recipe.readyInMinutes} minutes</i></li>
+                <li><i>Serves: ${recipe.servings}</i></li>
+            </ul>
+            <img src="${imageRoot + recipe.image}" 
+            alt="${recipe.image}" class="recipeCardImg">
+        </div>
+    `;
+}
+
+function getRecipeModal() {
+  return `
+        <dialog id="recipeModal">
+            <div class="grid-x grid-margin-x">
+                <div class="cell column medium-6">
+                    <img id="recipeModalImg">    
+                </div>
+                <div id="recipeModalInfoContainer" class="cell column medium-6">
+                    <h3 id="recipeModalTitle"></h3>
+                    <span>Ingredients:</span>
+                    <div id="recipeModalIngredients">
+
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="recipeModalButtonContainer">
+                        <button type="button" id="recipeModalSave" class="search-cta">Save</button>
+                        <a id="recipeModalUrl" class="search-cta btn btn-secondary" target="_blank">View Recipe</a>
+                    </div>
+        </dialog>
+    `;
+}
+
 function resultsPage(sidebar) {
   $("#root").empty();
   $("#root").html(`
         <div id="resultsContainer" class="cell medium-auto medium-cell-block-container">
             <div id="resultsGrid" class="grid-x grid-padding-x">
-                <div id="sidebar" class="cell medium-4 medium-cell-block-y">
+
+                <div id="sidebar" class="cell medium-2 medium-cell-block-y">
                     ${sidebar}
                 </div>
-                <div id="resultsContainer"  class="cell medium-8 medium-cell-block-y">
-                <h3>Recipe Search Results:</h3>
-                    <div id="results"> 
-                    
+                <div id="resultsContainer" class="cell medium-10 medium-cell-block">
+                <h3>Search Results:</h3>
+                    <div id="results" class="grid-x grid-padding-x"> 
+
                     </div>
                 </div>
-
             </div>
         </div> 
     `);
