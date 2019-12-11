@@ -120,7 +120,7 @@ function getIngredientsSidebar(ingredients) {
 
 
 //Build restaurants sidebar
-function getRestaurantsSidebar(restaurantSearches) {
+function getRestaurantsSidebar() {
   console.log("Sidebar Worked")
   return `
     <h3>Search Cuisines:</h3>
@@ -133,8 +133,9 @@ function getRestaurantCard(restaurant) {
   return `
         <div id="${restaurant.name}" class="restaurantCard cell medium-3">
             <h5>${restaurant.name}</h5>
-            <img src="${restaurant.featured_image}" 
-            alt="${restaurant.featured_image}" class="restaurantCardImg">
+            <div>${restaurant.cuisines}</div>
+            <img src="${imageRoot + restaurant.photos_url}" 
+            alt="Photo of ${restaurant.name}" class="restaurantCardImg">
         </div>
     `;
 }

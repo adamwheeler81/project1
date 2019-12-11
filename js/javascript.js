@@ -151,7 +151,7 @@ $(document).ready(function() {
           for (var i = 0; i < res.nearby_restaurants.length; i++) {
             let current = res.nearby_restaurants[i].restaurant;
             let resultTotal = res.nearby_restaurants.length;
-            $("#results").append(".restaurantCard");
+            $("#results").append(getRestaurantCard(current));
             
 
             //Results page 
@@ -159,7 +159,7 @@ $(document).ready(function() {
               //Only need name, picture, and cuisine
               //Need to add something if there is no image
             console.log("Name: " + current.name);
-            console.log("Image: " + current.featured_image);
+            console.log("Image: " + current.photos_url);
             console.log("Cuisines: " + current.cuisines);
           };
         };
