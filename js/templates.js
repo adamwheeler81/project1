@@ -92,6 +92,7 @@ function resultsPage(sidebar) {
                 <div id="sidebar" class="cell medium-2 medium-cell-block-y">
                     ${sidebar}
                 </div>
+
                 <div id="resultsContainer" class="cell medium-10 medium-cell-block">
                 <h3>Search Results:</h3>
                     <div id="results" class="grid-x grid-padding-x"> 
@@ -120,24 +121,19 @@ function getIngredientsSidebar(ingredients) {
 
 //Build restaurants sidebar
 function getRestaurantsSidebar(restaurantSearches) {
+  console.log("Sidebar Worked")
   return `
     <h3>Search Cuisines:</h3>
     <input type="search" placeholder="Search"></input>
-    <div id="ingredient-pill-box">
-        ${restaurantSearches.map(
-          (restaurantSearchTerm, index) =>
-            `<div class="ingredient-pill" id=${index}>${restaurantSearchTerm}</div>`
-        )}
-    </div>
     <input id="sidebarSearch" type="submit" value="Submit"></input>`;
 }
 
 //Build Restuarant card with details
 function getRestaurantCard(restaurant) {
   return `
-        <div id="${restaurant.id}" class="restaurantCard cell medium-3">
+        <div id="${restaurant.name}" class="restaurantCard cell medium-3">
             <h5>${restaurant.name}</h5>
-            <img src="${imageRoot + restaurant.featured_image}" 
+            <img src="${restaurant.featured_image}" 
             alt="${restaurant.featured_image}" class="restaurantCardImg">
         </div>
     `;
