@@ -111,7 +111,7 @@ li {
   white-space: nowrap;
 }
 
-.recipeCard {
+.recipeCard, .restaurantCard {
   float: left;
   padding: 5px;
   cursor: pointer;
@@ -120,23 +120,25 @@ li {
   text-align: center;
 }
 
-.recipeCardImg {
+.recipeCardImg, .restaurantCardImg {
   height: 200px;
   width: 200px;
 }
 
-#recipeModalImg {
+#recipeModalImg, #restaurantModalImg {
   float: left;
   padding: 10px;
 }
 
-#recipeModalButtonContainer {
+#recipeModalButtonContainer, #restaurantModalButtonContainer {
   text-align: center;
   width: 100%;
 }
 
 #recipeModalButtonContainer button,
-#recipeModalButtonContainer a {
+#recipeModalButtonContainer a, 
+#restaurantModalButtonContainer button,
+#restaurantModalButtonContainer a {
   display: inline;
 }
 
