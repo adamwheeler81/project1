@@ -131,11 +131,7 @@ $(document).ready(function() {
       }
     } */
 
-  $(document).on("click", "#sidebarSearch", function(e) {
-    e.preventDefault();
-    sQueryObject.queryIngredients = ingredients;
-    getRecipes();
-  });
+
 
   $("#mainInput").on("keypress", function(e) {
     if (e.which == 13) {
@@ -209,6 +205,8 @@ $(document).ready(function() {
           for (var i = 0; i < res.nearby_restaurants.length; i++) {
             let current = res.nearby_restaurants[i].restaurant;
             let resultTotal = res.nearby_restaurants.length;
+            $("#results").append(".restaurantCard");
+            
 
             //Results page 
               //Use template for results
@@ -265,15 +263,22 @@ $(document).ready(function() {
   };
 
 
-  $("#restaurantFind").on("click", /*"#sidebarSearch",*/ function(e) {
+  $(document).on("click", "#restaurantFind", function(e) {
     console.log("click working")
     e.preventDefault();
-    sQueryObject.queryRestaurants = restaurantSearches;
-
     getRestaurants();
-    //getRestaurantDetails();
+    resultsPage(getRestaurantsSidebar);
+    //sQueryObject.queryRestaurants = restaurantSearches;
+    
   });
 
+  $(document).on("click", "#sidebarSearch", function(e) {
+    e.preventDefault();
+    getRestaurants();
+    sQueryObject.queryCuisine = restaurant;
+  });
+  
+  //click event on restaurant card
 
 
 

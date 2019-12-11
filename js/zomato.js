@@ -8,6 +8,7 @@ var zQueryStr = "https://developers.zomato.com/api/v2.1/";
 var zQueryObj = {
   lat: "",
   lon: ""
+  //queryCuisine = "";
 };
 
 // Default settings object with empty queryStr
