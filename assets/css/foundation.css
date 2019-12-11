@@ -269,7 +269,7 @@ textarea {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
+  -webkit-box-direction: horizontal;
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap; }
@@ -591,7 +591,9 @@ textarea {
 
 .grid-padding-x > .cell {
   padding-right: 0.625rem;
-  padding-left: 0.625rem; }
+  padding-left: 0.625rem; 
+
+}
   @media print, screen and (min-width: 40em) {
     .grid-padding-x > .cell {
       padding-right: 0.9375rem;
@@ -1534,7 +1536,7 @@ textarea {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
@@ -2192,7 +2194,6 @@ h5, .h5,
 h6, .h6 {
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-style: normal;
-  font-weight: normal;
   color: inherit;
   text-rendering: optimizeLegibility; }
   h1 small, .h1 small,
@@ -2220,7 +2221,8 @@ h3, .h3 {
   font-size: 1.1875rem;
   line-height: 1.4;
   margin-top: 0;
-  margin-bottom: 0.5rem; }
+  margin-bottom: 0.5rem;
+  }
 
 h4, .h4 {
   font-size: 1.125rem;
@@ -2765,10 +2767,17 @@ textarea[readonly] {
 
 [type='submit'],
 [type='button'] {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  border-radius: 0; }
+    background: #ffcc2a;
+    border: none;
+    outline: none;
+    color: #000;
+    box-shadow: none;
+    border-radius: 1.4rem;
+    padding: 0.65rem 3.6rem;
+    margin: 5px;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
 
 input[type='search'] {
   -webkit-box-sizing: border-box;
