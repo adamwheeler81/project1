@@ -23,6 +23,7 @@ var sSettings = {
 };
 
 var returns = [10, 25, 50, 100];
+var imageRoot = "https://spoonacular.com/recipeImages/";
 
 var courses = [
   "main course",

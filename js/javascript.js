@@ -1,10 +1,5 @@
 $(document).ready(function() {
 
-  // stand in variables for testing
-  var ingredients = [];
-  var restaurantSearches = [];
-
-  // EDIT for templates
   // load landing page
   landingPage();
 
@@ -14,55 +9,25 @@ $(document).ready(function() {
   
   // function for recipe ajax query.
   function getRecipeDetails(queryId) {
-    // build results elements
-    var newDialog = $("<dialog>", {
-      id: "recipeInfo"
-    });
-    var newDiv = $("<div>", {
-      class: "queryResult"
-    });
-    var newTitle = $("<h2>", {
-      class: "recipeTitle"
-    });
-
     // build query
     var query = sQueryStr + queryId + "/information";
-
     sSettings.url = query;
 
     $.ajax(sSettings).done(function(response) {
       console.log(response);
-      newTitle.text(response.title);
-      var steps = $("<div>", {
-        id: "stepsDiv"
-      });
-      for (var i = 0; i < response.analyzedInstructions.length; i++) {
-        steps.append(
-          $("<h4>", {
-            text: response.analyzedInstructions[i].name
+      $("#recipeModalIngredients").empty();
+      $("#recipeModalTitle").text(response.title);
+      $("#recipeModalImg").attr("src", response.image);
+      for (var i = 0; i < response.extendedIngredients.length; i++) {
+        $("#recipeModalIngredients").append(
+          $("<li>", {
+            class: "recipeModalIngredient",
+            html: response.extendedIngredients[i].name
           })
         );
-        for (
-          var j = 0;
-          j < response.analyzedInstructions[i].steps.length;
-          j++
-        ) {
-          steps.append(
-            $("<span>", {
-              class: "steps",
-              text: response.analyzedInstructions[i].steps[j].step
-            })
-          );
-          //console.log(response.analyzedInstructions[i].steps[j].step);
-        }
+        console.log(response.extendedIngredients[i].name);
       }
-
-      newDiv.append(newTitle);
-      newDiv.append(steps);
-      newDialog.append(newDiv);
-      // append dialog to #results and show
-      $("#results").append(newDialog);
-      newDialog.show();
+      $("#recipeModalUrl").attr("href", response.sourceUrl);
     });
   }
 
@@ -84,60 +49,42 @@ $(document).ready(function() {
     sSettings.url = query;
 
     $.ajax(sSettings).done(function(response) {
-      if (response.results.totalResults == 0) {
-        console.log("No recipes found. Please search again.");
+      if (response.totalResults == 0) {
         $("#results").text(
           "Sorry! I couldn't find a gluten free recipe that matched the search terms."
         );
       } else {
-        // iterate through results and add recipes to list element inside of modal
-        console.log(response);
-
+        // iterate through results
         for (var i = 0; i < response.results.length; i++) {
-          var recipeCard = $("<div>", {
-            id: response.results[i].id,
-            class: "recipeCard"
-          });
-          recipeCard.append(
-            $("<h5>", {
-              html: response.results[i].title
-            })
-          );
-          recipeCard.append(
-            $("<img>", {
-              src: imageRoot + response.results[i].image,
-              alt: response.results[i].image,
-              class: "recipeCardImg"
-            })
-          );
 
-          $("#results").append(recipeCard);
+          $("#results").append(getRecipeCard(response.results[i]));
         }
       }
     });
   }
 
-  // Get ingredients from array and print to target div
-  /* function showIngredients(target) {
-      // set the target div depending on the value of "target"
-      var target = "sidebar" ? $("#ingredientsList") : $("#ingredientsMain");
-      for (var i = 0; i < ingredients.length; i++) {
-        target.append(
-          $("<div>", {
-            class: "ingredients",
-            html: ingredients[i]
-          })
-        );
-      }
-    } */
+
+  // EVENT HANDLERS
+  //$("#recipeFind").on("click", function() {
+  $(document).on("click", "#recipeFind", function() {
+    $("#root").empty();
+    // resultsPage: create results page from template and fill in with ingredients sidebar
+    resultsPage(getIngredientsSidebar(sQueryObject.queryIngredients));
+    // getRecipes: fill #results div with query results
+    getRecipes();
+  });
 
 
+  $("#restaurantFind").on("click", function() {
+    $("#root").empty();
+    resultsPage(getRestaurantSidebar());
+    getRestaurants();
+  });
 
-  $("#mainInput").on("keypress", function(e) {
+  $(document).on("keypress", "#mainInput", function(e) {
     if (e.which == 13) {
       // add new ingredient to array
       sQueryObject.queryIngredients.push($("#mainInput").val());
-      //sQueryObject.queryIngredients.push($("#mainInput").val());
       // clear input
       $("#mainInput").val("");
       $("#ingredient-pill-box").empty();
@@ -152,13 +99,12 @@ $(document).ready(function() {
     }
   });
 
-  $("#recipeFind").on("click", function() {
-    $("#root").empty();
-    // EDIT to add templates
 
-    getRecipes();
-    resultsPage(getIngredientsSidebar(sQueryObject.queryIngredients));
-    //showIngredients("sidebar");
+  $(document).on("click", ".recipeCard", function() {
+    $("#results").append(getRecipeModal());
+    getRecipeDetails($(this).attr("id"));
+    $("#recipeModal").show();
+
   });
 
 
