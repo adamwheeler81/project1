@@ -29,7 +29,6 @@ function landingPage() {
 `);
 }
 
-
 function getIngredientsSidebar(ingredients) {
   return `
     <h3>Search Ingredients:</h3>
@@ -38,7 +37,7 @@ function getIngredientsSidebar(ingredients) {
         ${ingredients
           .map(
             (ingredient, index) =>
-              `<div class="ingredient-pill" id=${index}>${ingredient}</div>`
+              `<div class="ingredient-pill">${ingredient}&nbsp;&nbsp;<span id=${index} class="ingRemove">x</span></div>`
           )
           .join("")}
     </div>
@@ -77,7 +76,8 @@ function getRecipeModal() {
             </div>
             <div id="recipeModalButtonContainer">
                         <button type="button" id="recipeModalSave" class="search-cta">Save</button>
-                        <a id="recipeModalUrl" class="search-cta btn btn-secondary" target="_blank">View Recipe</a>
+                        <button type="button" id="recipeModalSave" class="search-cta">
+                        <a id="recipeModalUrl" target="_blank">View Recipe</a></button>
                     </div>
         </dialog>
     `;
@@ -104,24 +104,9 @@ function resultsPage(sidebar) {
     `);
 }
 
-//Build recipe sidebar
-function getIngredientsSidebar(ingredients) {
-  return `
-    <h3>Search Ingredients:</h3>
-    <input type="search" placeholder="Search"></input>
-    <div id="ingredient-pill-box">
-        ${ingredients.map(
-          (ingredient, index) =>
-            `<div class="ingredient-pill" id=${index}>${ingredient}</div>`
-        )}
-    </div>
-    <input id="sidebarSearch" type="submit" value="Submit"></input>`;
-}
-
-
 //Build restaurants sidebar
 function getRestaurantsSidebar() {
-  console.log("Sidebar Worked")
+  console.log("Sidebar Worked");
   return `
     <h3>Search Cuisines:</h3>
     <input type="search" placeholder="Search"></input>
