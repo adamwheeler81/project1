@@ -51,7 +51,9 @@ input {
 ul {
   padding: 0;
   margin: 0;
+  padding: 2px;
 }
+
 
 .listItem {
   list-style: none;
@@ -168,6 +170,17 @@ ul {
   margin-top: 0.5rem;
 }
 
+.search-cta {
+  background: #ffcc2a;
+  border: none;
+  outline: none;
+  color: #000;
+  box-shadow: none;
+  padding: 0.65rem 3.6rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
 .action-container .search-cta {
   background: #ffcc2a;
   border: none;
@@ -207,14 +220,47 @@ ul {
   white-space: nowrap;
 }
 
-.recipeCard {
-  
+.recipeCard, .restaurantCard {
+  float: left;
+  padding: 5px;
+  cursor: pointer;
+  border: solid 1px black;
+  border-radius: 5px;
+  text-align: center;
 }
 
-.recipeCardImg {
+.recipeCardImg, .restaurantCardImg {
   height: 200px;
   width: 200px;
 }
+
 .background {
   z-index: 1;
+}
+
+#recipeModalImg, #restaurantModalImg {
+  float: left;
+  padding: 10px;
+}
+
+#recipeModalButtonContainer, #restaurantModalButtonContainer {
+  text-align: center;
+  width: 100%;
+}
+
+#recipeModalButtonContainer button,
+#recipeModalButtonContainer a, 
+#restaurantModalButtonContainer button,
+#restaurantModalButtonContainer a {
+  display: inline;
+}
+
+#recipeModalIngredients {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.recipeModalIngredient {
+  width: 50%;
 }

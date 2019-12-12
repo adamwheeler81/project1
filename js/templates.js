@@ -29,8 +29,8 @@ function landingPage() {
 `);
 }
 
-
-function getIngredientsSidebar(ingredients) {
+//Build Recipe Sidebar
+/*function getIngredientsSidebar(ingredients) {
   return `
     <h3>Search Ingredients:</h3>
     <input type="text" id="mainInput"></input>
@@ -43,7 +43,7 @@ function getIngredientsSidebar(ingredients) {
           .join("")}
     </div>
     <button type="button" id="recipeFind" class="search-cta btn btn-secondary">Submit</button>`;
-}
+}*/
 
 function getRecipeCard(recipe) {
   return `
@@ -85,7 +85,7 @@ function getRecipeModal() {
 
 function resultsPage(sidebar) {
   $("#root").empty();
-  $("#root").html(`
+  $("#root").html(`s
         <div id="resultsContainer" class="cell medium-auto medium-cell-block-container">
             <div id="resultsGrid" class="grid-x grid-padding-x">
 
@@ -104,7 +104,7 @@ function resultsPage(sidebar) {
     `);
 }
 
-//Build recipe sidebar
+//Duplicate Build recipe sidebar
 function getIngredientsSidebar(ingredients) {
   return `
     <h3>Search Ingredients:</h3>
@@ -125,7 +125,7 @@ function getRestaurantsSidebar() {
   return `
     <h3>Search Cuisines:</h3>
     <input type="search" placeholder="Search"></input>
-    <input id="sidebarSearch" type="submit" value="Submit"></input>`;
+    <input id="sidebarRestaurantSearch" type="submit" value="Submit"></input>`;
 }
 
 //Build Restuarant card with details
