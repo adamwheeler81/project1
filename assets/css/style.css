@@ -40,7 +40,6 @@ button:hover {
 ul {
   padding: 0;
   margin: 0;
-  padding: 2px;
 }
 
 .landing-page-container {
@@ -105,19 +104,6 @@ ul {
 }
 
 .search-cta {
-
-  background: #ffcc2a;
-  border: none;
-  outline: none;
-  color: #000;
-  box-shadow: none;
-  padding: 0.65rem 3.6rem;
-  font-weight: 600;
-  font-size: 1.2rem;
-}
-
-.action-container .search-cta {
-
   background: #ffcc2a;
   border: none;
   outline: none;
@@ -156,6 +142,10 @@ ul {
   white-space: nowrap;
 }
 
+.background {
+  z-index: 1;
+}
+
 .recipeCard,
 .restaurantCard {
   float: left;
@@ -168,14 +158,9 @@ ul {
 
 .recipeCardImg,
 .restaurantCardImg {
-
   height: 200px;
   width: 200px;
 }
-
-
-.background {
-  z-index: 1;
 
 #recipeModalImg,
 #restaurantModalImg {
@@ -205,5 +190,3 @@ ul {
 .recipeModalIngredient {
   width: 50%;
 }
-
-
