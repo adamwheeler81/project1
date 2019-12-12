@@ -32,6 +32,7 @@ $(document).ready(function() {
     $.ajax(sSettings).done(function(response) {
       //console.log(response);
       $("#recipeModalIngredients").empty();
+      $("#recipeModal").attr("data-type", queryId);
       $("#recipeModalTitle").text(response.title);
       $("#recipeModalImg").attr("src", response.image);
       for (var i = 0; i < response.extendedIngredients.length; i++) {
@@ -112,6 +113,18 @@ $(document).ready(function() {
     $("#results").append(getRecipeModal());
     getRecipeDetails($(this).attr("id"));
     $("#recipeModal").show();
+  });
+
+  // Save recipe details to localStorage
+  $(document).on("click", "#recipeModalSave", function() {
+    var saveToStorage = {
+      recipeName: $("#recipeModalTitle").text(),
+      recipeUrl: $("#recipeModalUrl").attr("href")
+    };
+    localStorage.setItem(
+      $("#recipeModal").attr("data-type"),
+      JSON.stringify(saveToStorage)
+    );
   });
 
   ///////////////////////////////////////////////////////////////////
