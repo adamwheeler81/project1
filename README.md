@@ -36,7 +36,7 @@ GitHub: [clauries](https://github.com/clauries)
 <img src="assets/images/capture-recipes-results.png" alt="Recipe Results Page" style="float: left; margin-right: 10px;" width="200"/>
 <img src="assets/images/capture-recipes-card.png" alt="Recipe Card" style="float: left; margin-right: 10px;" width="200"/>
 <img src="assets/images/capture-landing-page-search-restaurant.png" alt="Landing Page: search for restaurants near you" style="float: left; margin-right: 10px;" width="200"/>
-<img src="assets/images/capture-restaurants-give-location.png" alt="Give Permission to use location" style="float: left; margin-right: 10px;" width="200"/>
+<img src="assets/images/capture-restaurants-give-location.png" alt="Give permission to use location" style="float: left; margin-right: 10px;" width="200"/>
 <img src="assets/images/capture-restaurants-results.png" alt="Restaurant Results Page" style="float: left; margin-right: 10px;" width="200"/>
 
 
