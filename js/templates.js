@@ -121,7 +121,7 @@ function getRestaurantCard(restaurant) {
             <h5>${restaurant.name}</h5>
             <div>${restaurant.cuisines}</div>
             <div>User Rating: ${restaurant.user_rating.aggregate_rating}/5</div>
-            
+            <div>${restaurant.location.address}</div>
 
         </div>
     `;
