@@ -29,6 +29,7 @@ function landingPage() {
 `);
 }
 
+//Build sidebar for recipes
 function getIngredientsSidebar(ingredients) {
   return `
     <h3>Search Ingredients:</h3>
@@ -119,8 +120,9 @@ function getRestaurantCard(restaurant) {
         <div id="${restaurant.name}" class="restaurantCard cell medium-3">
             <h5>${restaurant.name}</h5>
             <div>${restaurant.cuisines}</div>
-            <img src="${imageRoot + restaurant.photos_url}" 
-            alt="Photo of ${restaurant.name}" class="restaurantCardImg">
+            <div>User Rating: ${restaurant.user_rating.aggregate_rating}/5</div>
+            
+
         </div>
     `;
 }

@@ -226,6 +226,7 @@ $(document).ready(function() {
     });
   }
 
+//EVENT HANDLERS
   $(document).on("click", "#restaurantFind", function(e) {
     console.log("click working");
     e.preventDefault();
@@ -240,5 +241,10 @@ $(document).ready(function() {
     sQueryObject.queryCuisine = restaurant;
   });
 
-  //click event on restaurant card
+    // show restaurants when clicking the restaurant card
+    $(document).on("click", ".restaurantCard", function() {
+      $("#results").append(getRestaurantModal());
+      getRestaurantDetails($(this).attr("id"));
+      $("#restaurantModal").show();
+    });
 });
