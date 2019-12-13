@@ -1,5 +1,5 @@
 # Gluten Tootin
-{A catchy slogan}
+#### Making gluten free choices easy!
 
 ## Concept
 This is an app for searching for gluten-free recipes and restaurants.
@@ -32,7 +32,7 @@ Laurie Schroeder
 GitHub: [clauries](https://github.com/clauries)
 
 ## How to Use
-{Add in instructions with screenshots}
+<img src="assets/images/screenshot1-landing-page-start.png" alt="Landing Page" style="float: left; margin-right: 10px; width="200:/>
 
 ## Challenges
 * **Finding Our Roles**: This was the first time any of us had worked together. We are all very curteous, kind people who do not want to step on anyone else's toes. It took some time to settle into our specific roles. 
