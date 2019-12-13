@@ -1,7 +1,11 @@
 # Gluten Tootin
 #### Making gluten free choices easy!
 
-(https://img.shields.io/github/issues/adamwheeler81/project1)  https://img.shields.io/github/forks/adamwheeler81/project1
+[badge](https://img.shields.io/github/issues/adamwheeler81/project1)  https://img.shields.io/github/forks/adamwheeler81/project1
+
+GitHub issues:	GitHub issues badge	https://img.shields.io/github/issues/adamwheeler81/project1
+GitHub forks:	[GitHub forks badge](https://img.shields.io/github/forks/adamwheeler81/project1)
+
 ## Concept
 This is an app for searching for gluten-free recipes and restaurants.
 
