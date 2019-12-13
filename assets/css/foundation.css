@@ -176,7 +176,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #fefefe;
+  background: lightyellow;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-weight: normal;
   line-height: 1.5;
@@ -2728,6 +2728,9 @@ textarea {
   border: 1px solid #cacaca;
   border-radius: 0;
   background-color: #fefefe;
+  background-image: url(../images/icons8-ice-cream-24.png);
+  background-repeat: no-repeat;
+  background-position: 2%;
   -webkit-box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
           box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
   font-family: inherit;
