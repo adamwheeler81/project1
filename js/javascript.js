@@ -226,12 +226,12 @@ $(document).ready(function() {
     });
   }
 
-//EVENT HANDLERS
+  //EVENT HANDLERS
   $(document).on("click", "#restaurantFind", function(e) {
     console.log("click working");
     e.preventDefault();
     getRestaurants();
-    resultsPage(getRestaurantsSidebar);
+    resultsPage(getRestaurantsSidebar());
     //sQueryObject.queryRestaurants = restaurantSearches;
   });
 
@@ -241,10 +241,10 @@ $(document).ready(function() {
     sQueryObject.queryCuisine = restaurant;
   });
 
-    // show restaurants when clicking the restaurant card
-    $(document).on("click", ".restaurantCard", function() {
-      $("#results").append(getRestaurantModal());
-      getRestaurantDetails($(this).attr("id"));
-      $("#restaurantModal").show();
-    });
+  // show restaurants when clicking the restaurant card
+  $(document).on("click", ".restaurantCard", function() {
+    $("#results").append(getRestaurantModal());
+    getRestaurantDetails($(this).attr("id"));
+    $("#restaurantModal").show();
+  });
 });
