@@ -25,17 +25,17 @@ As a person with certain dieting restrictions, I want to be able to search for f
 
 ## Collaborators
 #### Lead developer: 
-Dan Dismuke 
-.. GitHub: [GuyFromHere](https://github.com/GuyFromHere)
+..Dan Dismuke 
+..GitHub: [GuyFromHere](https://github.com/GuyFromHere)
 
 #### Lead Designer: 
 Adam Wheeler
-.. GitHub: [adamwheeler81](https://github.com/adamwheeler81)
+GitHub: [adamwheeler81](https://github.com/adamwheeler81)
 
 #### Lead Administrator: 
 Laurie Schroeder
-.. GitHub: [clauries](https://github.com/clauries)
-
+..* GitHub: [clauries](https://github.com/clauries)
+..* LinkedIn: www.linkedin.com/in/laurie-schroeder-129705137
 
 ## How to Use
 <img src="assets/images/capture-landing-page-start.png" alt="Landing Page" style="float: left; margin-right: 10px;" width="200"/>
@@ -88,3 +88,17 @@ Laurie Schroeder
 
 * **Add Rating System**: Develop a rating system for restaurants & stores to help other users know how gluten-free-friendly a location actually is. For example: are there only a couple options on the menu and there could be cross-contamination? Or is the entire establishment gluten-free?
 
+## License
+Copyright [2019] [Adam Wheeler, Dan Dismuke, Laurie Schroeder]
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
