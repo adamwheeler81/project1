@@ -1,6 +1,7 @@
 # Gluten Tootin
 #### Making gluten free choices easy!
 
+(https://img.shields.io/github/issues/adamwheeler81/project1)  https://img.shields.io/github/forks/adamwheeler81/project1
 ## Concept
 This is an app for searching for gluten-free recipes and restaurants.
 
@@ -26,19 +27,16 @@ As a person with certain dieting restrictions, I want to be able to search for f
 ## Collaborators
 #### Lead developer: 
 Dan Dismuke 
-
-GitHub: [GuyFromHere](https://github.com/GuyFromHere)
+* GitHub: [GuyFromHere](https://github.com/GuyFromHere)
 
 #### Lead Designer: 
 Adam Wheeler
-
-GitHub: [adamwheeler81](https://github.com/adamwheeler81)
+* GitHub: [adamwheeler81](https://github.com/adamwheeler81)
 
 #### Lead Administrator: 
 Laurie Schroeder
+* GitHub: [clauries](https://github.com/clauries)
 
-GitHub: [clauries](https://github.com/clauries)
-LinkedIn: www.linkedin.com/in/laurie-schroeder-129705137
 
 ## How to Use
 <img src="assets/images/capture-landing-page-start.png" alt="Landing Page" style="float: left; margin-right: 10px;" width="200"/><img src="assets/images/capture-landing-page-search-recipe.png" alt="Landing Page: search for recipes by ingredients" style="float: left; margin-right: 10px;" width="200"/><img src="assets/images/capture-recipes-results.png" alt="Recipe Results Page" style="float: left; margin-right: 10px;" width="200"/><img src="assets/images/capture-recipes-card.png" alt="Recipe Card" style="float: left; margin-right: 10px;" width="200"/><img src="assets/images/capture-landing-page-search-restaurant.png" alt="Landing Page: search for restaurants near you" style="float: left; margin-right: 10px;" width="200"/><img src="assets/images/capture-restaurants-give-location.png" alt="Give permission to use location" style="float: left; margin-right: 10px;" width="200"/><img src="assets/images/capture-restaurants-results.png" alt="Restaurant Results Page" style="float: left; margin-right: 10px;" width="200"/>
