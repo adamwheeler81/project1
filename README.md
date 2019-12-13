@@ -28,17 +28,11 @@ As a person with certain dieting restrictions, I want to be able to search for f
 
 
 ## Collaborators
-#### Lead developer: 
-Dan Dismuke 
-* GitHub: [GuyFromHere](https://github.com/GuyFromHere)
+Lead developer: Dan Dismuke, GitHub: [GuyFromHere](https://github.com/GuyFromHere)
 
-#### Lead Designer: 
-Adam Wheeler
-* GitHub: [adamwheeler81](https://github.com/adamwheeler81)
+Lead Designer: Adam Wheeler, GitHub: [adamwheeler81](https://github.com/adamwheeler81)
 
-#### Lead Administrator: 
-Laurie Schroeder
-* GitHub: [clauries](https://github.com/clauries)
+Lead Administrator: Laurie Schroeder, GitHub: [clauries](https://github.com/clauries)
 
 
 ## How to Use
